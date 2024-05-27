@@ -1,0 +1,13 @@
+GET_USER
+SELECT 
+	a.szUserName, a.szUserLogin, b.szLevelName, c.szMemberName, c.szJiraId,
+	c.szConfluenceId, d.szTeamName, e.szRoleName,
+	a.szUserId, a.szLevelId, a.szTeamMemberId, c.szTeamId, c.szTeamRole,
+	a.szPassword, a.szIsLogin
+-- 	*
+FROM dbo.INA_MD_User AS a
+JOIN dbo.INA_MD_UserLevel AS b ON a.szLevelId = b.szUserLevelId
+JOIN dbo.INA_MD_TeamMember AS c ON a.szTeamMemberId = c.szMemberId
+JOIN dbo.INA_MD_Team AS d ON c.szTeamId = d.szTeamId
+JOIN dbo.INA_MD_TeamRole AS e ON c.szTeamRole = e.szRoleId
+====================================================================================
